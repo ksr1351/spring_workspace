@@ -1,0 +1,25 @@
+■ RequestMapping(요청 매핑)
+요청이 왔을 때 어떤 컨트롤러가 호출이 되어야 하는지 알려주는 지표 
+URL 을 컨트롤러의 메서드와 매핑할 때 사용하는 어노테이션
+
+@RequestMapping(value = "/hello-basic")
+ 이렇게 매핑을 하면 localhost:8080/hello-basic으로 url을 입력했을 경우에 이것에 해당하는 메서드가 실행된다.
+ 
+ 
+■ GET(Read) / POST(Create)
+HTTP프로토콜을 이용해서 서버에 무언가를 전달할 때 사용하는 방식
+큰 차이점은 데이터가 어디에 위치하는가
+
+GET(Read) 즉 SELECT 할때쓰는것이적당합니다.
+SELECT
+서버에 데이터를 가져와 보여주기 위함
+
+ 
+POST(Create) 즉 INSERT 할때 쓰는것이 적당합니다.
+INSERT,update,delete
+서버의 값,상태를 바꾸기 위함
+
+
+
+
+jdbctype = oracletype

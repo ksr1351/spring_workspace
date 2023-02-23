@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mem">
+	<select id="all" resultType="model.MemDTO">
+		SELECT * FROM mem
+		ORDER BY num DESC
+	</select>
+
+	<!-- insert (jdbcType=VARCHAR은 null값이 넘어올 경우 오류를 방지하기위함이다.) -->
+	<insert id="ins" parameterType="model.MemDTO">
+		INSERT INTO mem(num, name, age, loc)
+		VALUES(mem_num_seq.nextval, #{name, jdbcType=VARCHAR}, #{age}, #{loc, jdbcType=VARCHAR})
+	</insert>
+
+
+	<!-- update -->
+	<!-- 수정을 하기위해 num에 해당하는 데이터를 가져와서 보여주기위한 작업 -->
+	<select id="one" parameterType="int" resultType="model.MemDTO">
+		SELECT * FROM mem
+		WHERE num=#{num}
+	</select>
+
+
+	<select id="search" resultType="model.MemDTO" parameterType="model.MemDTO">
+		select * from mem
+		where num=#{num} and name=#{name}
+	</select>
+
+
+
+	<update id="upt" parameterType="model.MemDTO">
+		UPDATE mem SET name=#{name}, age=#{age}, loc=#{loc}
+		WHERE num=#{num}
+	</update>
+
+
+	<!-- delete -->
+	<delete id="del" parameterType="int">
+		DELETE FROM mem
+		WHERE num=#{num}
+	</delete>
+
+</mapper>

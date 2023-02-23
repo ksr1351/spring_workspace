@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 생성자를 이용한 의존성 주입 -->
+
+	<!-- ServiceImp svc1 = new ServiceImp("홍길동") -->
+	<bean id="svc1" class="part02.ServiceImp"> <!-- 생성자 이용해서 값을 주입 -->
+		<!-- 생성자를 통해 값을 할당하기 때문에 constructor-arg -->
+		<!-- <constructor-arg> <value>홍길동</value> </constructor-arg> -->
+
+		<constructor-arg value="홍길동" />
+	</bean>
+
+
+	<!-- ServiceImp svc2 = new ServiceImp("여진구", 30) -->
+	<bean id="svc2" class="part02.ServiceImp">
+		<!--<constructor-arg type="java.lang.String" index="0"> <value>여진구</value> 
+			</constructor-arg> 타입은 선언안해도 찾아들어감 <constructor-arg type="int" index="1"> 
+			<value>30</value> </constructor-arg> -->
+
+
+		<constructor-arg value="여진구" type="java.lang.String"
+			index="0" />
+		<constructor-arg value="30" type="int" index="1" />
+	</bean>
+
+
+
+	<!-- (기존방법) 랜덤에서 객체생성 
+		Random ran = new Random(); 
+		ServicImp svc3 = new ServiceImp(ran); 
+	-->
+
+	<bean id="ran" class="java.util.Random" />
+
+	<bean id="svc3" class="part02.ServiceImp">
+		<!-- <constructor-arg>
+			<ref bean="ran" /> 
+        값할당 : value / 선언된 값 : ref
+		</constructor-arg>-->
+
+
+	<constructor-arg ref = "ran"/>
+
+
+
+	</bean>
+
+
+
+
+
+
+
+</beans>
+
+

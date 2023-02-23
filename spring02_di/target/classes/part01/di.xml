@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- bean태그는 spring container로 생성이됨 -->
+<!-- MessageBeanKorea mb = new MessageBeanKorea()은 spring container쪽에서 하기 때문에 따로 설정할 필요없음(IOC) -->
+<!--<bean id="mb" class="part01.MessageBeanKorea"/>-->
+
+<bean id="mb" class="part01.MessageBeanEnglish"/>
+
+</beans>

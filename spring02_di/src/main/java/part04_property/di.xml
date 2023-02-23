@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 프로퍼티를 이용한 의존성 주입 -->
+
+<!-- 
+	ServiceImp svc1 = new ServiceImp();
+	svc1.setName("홍길동");
+ -->
+ 
+ <bean id="svc1" class="part04_property.ServiceImp">
+ <!-- ↓ property 구현하려면 ServiceImp에 setter메소드 정의되어 있어야함 -->
+ 
+ 	<!-- <property name="name"> 
+ 		<value>홍길동</value>
+ 	</property> -->
+ 	
+ 	<property name="name" value="홍길동"/>
+ </bean>
+ 
+ 
+ 
+ <!-- 
+ 	Random ran = new Random(); 객체생성은 프레임워크에 넘기기
+ 	ServiceImp svc2 = new ServiceImp(); 이 프레임워크에서 객체생성을 넘겨줌
+ 	svc.setRan(ran);
+  -->
+ 
+ <bean id = "ran" class="java.util.Random"/>
+ <bean id = "svc2" class="part04_property.ServiceImp">
+ 	<!-- <property name="ran">
+ 		<ref bean="ran"/>
+ 	</property> -->
+ 	
+ 	<property name="ran" ref="ran"/> <!-- ran이라는 setter 메소드에 ran을 넣어줌 -->
+ 
+  </bean> 
+ 
+ <!-- p:프로퍼티="값 -->
+ <bean id="svc3" class="part04_property.ServiceImp" p:name="홍길동"/>
+ 
+ 
+ <!-- p:프로퍼티-ref="빈 id속성" -->
+ <bean id="svc4" class="part04_property.ServiceImp" p:ran-ref="ran"/>
+ 
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
